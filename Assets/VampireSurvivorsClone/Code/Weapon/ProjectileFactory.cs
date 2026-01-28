@@ -7,7 +7,7 @@ public class ProjectileFactory
     private List<ProjectileLife> _activeProjectiles = new();
 
     [Inject]
-    private ProjectileLife.Pool _projectilesPool;
+    private ProjectileLife.ProjectilePool _projectilesPool;
 
     public ProjectileLife SpawnProjectile(Transform weapon)
     {
