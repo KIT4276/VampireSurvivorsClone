@@ -14,8 +14,7 @@ public class HeroMove : MonoBehaviour
 
     private bool _isMoving = false;
 
-    [Inject]
-    private void PseudoConstruct(PlayerInput playerInput) =>
+    public void Init(PlayerInput playerInput) =>
         _input = playerInput;
 
     private void Awake()

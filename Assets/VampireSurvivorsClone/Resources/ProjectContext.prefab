@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroPrefab: {fileID: 7083962480447615069, guid: b636408c0057b3441a6d9662da95292d, type: 3}
+  _projectilePrefab: {fileID: 3220287582528433059, guid: 85c561c7734f0e347a7213c85a6d743e, type: 3}

@@ -246,6 +246,8 @@ GameObject:
   - component: {fileID: 7223159160696481257}
   - component: {fileID: 5997922951614833664}
   - component: {fileID: 4660421781262798842}
+  - component: {fileID: 9138131667850784332}
+  - component: {fileID: 8522101284000463722}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -268,6 +270,7 @@ Transform:
   m_Children:
   - {fileID: 3391307897444131670}
   - {fileID: 5847429173604728332}
+  - {fileID: 8070672349793700730}
   m_Father: {fileID: 4735015851034836311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5997922951614833664
@@ -307,9 +310,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd4e24341c30b941b99b9f8ac3c67e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 5997922951614833664}
   _speed: 8
   _turnSpeed: 720
+  _characterController: {fileID: 5997922951614833664}
+--- !u!114 &9138131667850784332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252011314907303223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2b71d79b12c64c8356e3ec667c83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rateOfFire: 3
+  _weapon: {fileID: 8070672349793700730}
+--- !u!114 &8522101284000463722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252011314907303223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08246fb1e4700bf41a16ac83c8bd4b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fire: {fileID: 9138131667850784332}
+  _move: {fileID: 4660421781262798842}
 --- !u!1 &7083962480447615069
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,3 +495,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8345061928942720057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8070672349793700730}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8070672349793700730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345061928942720057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7223159160696481257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

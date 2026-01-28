@@ -1,17 +1,30 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 public class GameplayInstaller : MonoInstaller
 {
     [SerializeField] private GameObject _heroPrefab;
-    
+    [SerializeField] private GameObject _projectilePrefab;
+
     public override void InstallBindings()
     {
         Container.BindInterfacesAndSelfTo<PlayerInput>()
             .AsSingle();
 
-        InstallHero();
+        Container.Bind<ProjectileFactory>()
+            .AsSingle();
 
+        InstallHero();
+        InstallProjectilePool();
+    }
+
+    private void InstallProjectilePool()
+    {
+        Container.BindMemoryPool<ProjectileLife, ProjectileLife.Pool>()
+           .WithInitialSize(20) 
+           .FromComponentInNewPrefab(_projectilePrefab)
+           .UnderTransformGroup("Projectiles");
     }
 
     private void InstallHero()
@@ -22,11 +35,9 @@ public class GameplayInstaller : MonoInstaller
         .NonLazy();
 
 
-        Container.Bind<HeroMove>()
+        Container.Bind<Hero>()
         .FromResolveGetter<HeroRoot>(root =>
-            root.GetComponentInChildren<HeroMove>(true))
+            root.GetComponentInChildren<Hero>(true))
         .AsSingle();
-
-        //todo other hero
     }
 }
