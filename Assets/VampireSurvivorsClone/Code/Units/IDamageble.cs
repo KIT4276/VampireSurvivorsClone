@@ -2,7 +2,7 @@ using System;
 
 public interface IDamageble
 {
-    public event Action DamageTaken;
+    public bool IsEnemy { get; }
 
-    void TakeDamage(int value);
+    void TakeDamage(float value);
 }

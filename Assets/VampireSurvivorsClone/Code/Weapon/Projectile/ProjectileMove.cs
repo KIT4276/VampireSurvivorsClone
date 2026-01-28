@@ -1,13 +1,13 @@
 using UnityEngine;
 
 public class ProjectileMove : MonoBehaviour// AI предложил время жизни реализовать здесь,
-                                           // я вынесла в другой класс
+                                                 // я вынесла в другой класс
 {
     [SerializeField] private float _speed = 20f;
 
-    private Vector3 _direction;
+     private Vector3 _direction;
 
-    public void SetDirection(Vector3 worldDirection)
+    public void SpawnInit(Vector3 worldDirection)
     {
         if (worldDirection.sqrMagnitude < 0.0001f) return;
 

@@ -1,26 +1,24 @@
 using System;
 using UnityEngine;
 
-public class BaseFire : MonoBehaviour
+public abstract class BaseFire : MonoBehaviour
 {
-    [SerializeField] private float _rateOfFire = 3;
-    [SerializeField] private Transform _weapon;
+    [SerializeField] protected float _rateOfFire = 3;
+    [SerializeField] protected Transform _weapon;
 
-    private ProjectileFactory _projectileFactory;
+    protected ProjectileFactory _projectileFactory;
 
-    private float _nextShotTime;
+    protected float _nextShotTime;
 
     public void Init(ProjectileFactory projectileFactory)
     {
         _projectileFactory = projectileFactory;
     }
 
-    private void Update()
-    {
+    protected void Update() => 
         TryShoot();
-    }
 
-    private void TryShoot() //AI
+    protected void TryShoot() //AI
     {
         if (_projectileFactory == null)
             return;
@@ -32,6 +30,8 @@ public class BaseFire : MonoBehaviour
 
         _nextShotTime = Time.time + fireInterval;
 
-        _projectileFactory.SpawnProjectile(_weapon);
+        Shoot();
     }
+
+    protected abstract void Shoot();
 }

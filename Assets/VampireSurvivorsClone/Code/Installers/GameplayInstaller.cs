@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Zenject;
+using static ExperienceForEnemy;
 
 public class GameplayInstaller : MonoInstaller
 {
@@ -8,6 +9,8 @@ public class GameplayInstaller : MonoInstaller
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _enemySpawnerPrefab;
+    [SerializeField] private GameObject _mainUIPrefab;
+    [SerializeField] private GameObject _experiencePrefab;
 
     public override void InstallBindings()
     {
@@ -29,10 +32,24 @@ public class GameplayInstaller : MonoInstaller
             .FromComponentInNewPrefab(_enemySpawnerPrefab)
             .AsSingle()
             .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<ExperienceService>()
+            .AsSingle()
+            .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<MainGameUI>()
+            .FromComponentInNewPrefab(_mainUIPrefab)
+            .AsSingle()
+            .NonLazy();
     }
 
     private void InstallEnemyPool()
     {
+        Container.BindMemoryPool<ExperienceForEnemy, ExperienceForEnemy.ExperienceForEnemyPool>()
+            .WithInitialSize(20)
+            .FromComponentInNewPrefab(_experiencePrefab)
+            .UnderTransformGroup("Experience");
+
         Container.BindMemoryPool<Enemy, Enemy.EnemyPool>()
             .WithInitialSize(20)
             .FromComponentInNewPrefab(_enemyPrefab)
@@ -42,7 +59,7 @@ public class GameplayInstaller : MonoInstaller
 
     private void InstallProjectilePool()
     {
-        Container.BindMemoryPool<ProjectileLife, ProjectileLife.ProjectilePool>()
+        Container.BindMemoryPool<Projectile, Projectile.ProjectilePool>()
            .WithInitialSize(20)
            .FromComponentInNewPrefab(_projectilePrefab)
            .UnderTransformGroup("Projectiles");
@@ -59,6 +76,11 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<Hero>()
         .FromResolveGetter<HeroRoot>(root =>
             root.GetComponentInChildren<Hero>(true))
+        .AsSingle();
+
+        Container.Bind<HeroDamageble>()
+            .FromResolveGetter<HeroRoot>(root =>
+            root.GetComponentInChildren<HeroDamageble>(true))
         .AsSingle();
     }
 }

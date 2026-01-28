@@ -78,3 +78,5 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 3220287582528433059, guid: 85c561c7734f0e347a7213c85a6d743e, type: 3}
   _enemyPrefab: {fileID: 8989986499519751656, guid: c328ba5fb5e30ae4481d6f764d17b79a, type: 3}
   _enemySpawnerPrefab: {fileID: 4613404383631683413, guid: 676e20c65abf7304facecb87252a559e, type: 3}
+  _mainUIPrefab: {fileID: 5837828284237029347, guid: d3700c2f3f079354585b8244edd8cf05, type: 3}
+  _experiencePrefab: {fileID: 7892183592189846845, guid: 2ba74959286813b478763641372a5c56, type: 3}
